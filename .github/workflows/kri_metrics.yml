@@ -1,0 +1,16 @@
+name: Update KRI Metrics
+on:
+  schedule:
+    - cron: '0 10 * * 1'  # every Monday 10am
+  workflow_dispatch:
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run Python script
+        run: |
+          python3 automation/run_metrics.py
