@@ -1,16 +1,35 @@
 name: Update KRI Metrics
+
 on:
   schedule:
-    - cron: '0 10 * * 1'  # every Monday 10am
+    - cron: '0 10 * * 1'  # every Monday at 10:00 UTC
   workflow_dispatch:
 
 jobs:
   update-metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Python script
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
         run: |
-          python3 automation/run_metrics.py
+          python -m pip install --upgrade pip
+          pip install pandas
+
+      - name: Ensure reports directory exists
+        run: mkdir -p reports
+
+      - name: Run metrics script
+        run: python3 automation/run_metrics.py
+
+      - name: Upload reports artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kri-metrics
+          path: reports/
