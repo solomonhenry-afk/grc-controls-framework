@@ -1,4 +1,5 @@
 # 🧩 GRC Controls Implementation Framework  
+[![GRC Validate & Report](https://github.com/solomonhenry-afk/grc-controls-framework/actions/workflows/kri_metrics.yml/badge.svg)](https://github.com/solomonhenry-afk/grc-controls-framework/actions/workflows/kri_metrics.yml)
 
 A professional-grade framework demonstrating how Lighthouse Technology maps **NIST CSF, ISO 27001, and COBIT** controls to technical and governance implementations.  
 
